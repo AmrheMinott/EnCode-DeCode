@@ -61,7 +61,6 @@ else:
 
     while userInput != "exit":
 
-        # EemanE  EymE  $euq$
         unverse = userInput.replace("E" , "")
         unverse = unverse.replace("$" , "")
 
