@@ -4,7 +4,9 @@
     Variables (1)
         userInput: (String) -- this variable is what the user entered from the terminal
 
-    What App Does: Takes a string passed in from the keyboard via user's input and encrpyts that value.
+    What App Does:
+        Takes a string passed in from the keyboard via user's input and encrpyts that value.
+        There is also the ability of the app to decode the same thought and ideas that were added orignially.
 '''
 
 
