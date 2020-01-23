@@ -58,7 +58,8 @@ if option == "y":
 
 else:
     # we decode here
-
+    
+    # infinite loop until user wants to leave
     while userInput != "exit":
 
         unverse = userInput.replace("E" , "")
@@ -66,6 +67,7 @@ else:
         
         # filps the word backwards to undo reversing
         unverse = unverse[::-1]
+        # iterate through each word
         for key, value in encrypt.items():
             for word in unverse.split():
                 if word == value:
