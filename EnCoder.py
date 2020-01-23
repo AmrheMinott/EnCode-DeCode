@@ -17,8 +17,8 @@ userInput = input("\n\n\nEnter String to reverse: -> ")
 option = input("\n\n\nDo you want to endode (y - encode n - decode). Enter option: -> ")
 
 
-
 # encryption dictionary
+# this dictionary is used to hold a few words that I personally know and use them in the encrptyion process
 encrypt = {
     "de":"$de$",
     "dinero":"$dinero$",
@@ -63,7 +63,8 @@ else:
 
         unverse = userInput.replace("E" , "")
         unverse = unverse.replace("$" , "")
-
+        
+        # filps the word backwards to undo reversing
         unverse = unverse[::-1]
         for key, value in encrypt.items():
             for word in unverse.split():
