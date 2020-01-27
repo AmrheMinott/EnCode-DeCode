@@ -1,4 +1,7 @@
 # EnCode-DeCode
+Project Name: Agnes Meyer Driscoll
+  Hailed as one of the best cryptographer of her time worked during with the Navy, NSA and made breaks in Japanese naval codes OP-20-G
+
 An Encoder of my thought into a manner which I can understand with ease, so that anyone else who reads will not understand thus keeping my thoughts when printed private for display.
 
 
@@ -13,6 +16,6 @@ Why:
         So not only was this a good practice on my python programming but a it made the encrypting process
         of my thoughts alot faster and easier.
 
-What App Does: 
+What App Does:
         Takes a string passed in from the keyboard via user's input and encrpyts that value.
         There is also the ability of the app to decode the same thought and ideas that were added orignially.
