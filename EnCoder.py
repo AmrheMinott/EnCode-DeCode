@@ -20,14 +20,33 @@ option = input("\n\n\nDo you want to endode (y - encode n - decode). Enter optio
 # encryption dictionary
 # this dictionary is used to hold a few words that I personally know and use them in the encrptyion process
 encrypt = {
+    "aspectos":"$aspectos$",
+
+    "bien":"$bien$",
+
+    "computador":"$computador$",
+    "culturas":"$culturas$",
+
     "de":"$de$",
     "dinero":"$dinero$",
-    "y":"$y$",
+
+    "hablando":"$hablando$",
+    "como":"$como$",
+
+    "letra":"$letra$",
+    "letras":"$letras$",
+
     "ninos":"$ninos$",
+
+    "persona":"$persona$",
     "proteccion":"$proteccion$",
-    "culturas":"$culturas$",
+
+    "quien":"$quien$",
+
     "realizacion":"$realizacion$",
-    "real":"$real$"
+    "real":"$real$",
+
+    "y":"$y$"
 }
 
 
@@ -54,17 +73,18 @@ if option == "y":
         reverse = builtString[::-1]
         print(f"Your String reversed is \n\n-> {reverse}")
         userInput = input("\n\n\nEnter Another String to EnCode: -> ")
+        userInput = userInput.lower();
         builtString = " "
 
 else:
     # we decode here
-    
+
     # infinite loop until user wants to leave
     while userInput != "exit":
 
         unverse = userInput.replace("E" , "")
         unverse = unverse.replace("$" , "")
-        
+
         # filps the word backwards to undo reversing
         unverse = unverse[::-1]
         # iterate through each word
@@ -76,3 +96,14 @@ else:
         print(f"Your Decoded String is \n {unverse}")
 
         userInput = input("\n\n\nEnter Another String to DeCode: -> ")
+        userInput = userInput.lower();
+
+
+
+
+
+
+
+
+
+# end of program
