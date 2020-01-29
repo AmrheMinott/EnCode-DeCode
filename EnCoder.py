@@ -18,7 +18,7 @@ option = input("\n\n\nDo you want to endode (y - encode n - decode). Enter optio
 
 
 # encryption dictionary
-# this dictionary is used to hold a few words that I personally know and use them in the encrptyion process
+# this dictionary is used to hold a few words that I personally know and so I use them in the encrptyion process
 encrypt = {
     "aspectos":"$aspectos$",
 
@@ -70,6 +70,7 @@ if option == "y":
             else:
                 builtString += (" E" + word + "E ")
 
+        # reverse the string
         reverse = builtString[::-1]
         print(f"Your String reversed is \n\n-> {reverse}")
         userInput = input("\n\n\nEnter Another String to EnCode: -> ")
@@ -85,7 +86,7 @@ else:
         unverse = userInput.replace("E" , "")
         unverse = unverse.replace("$" , "")
 
-        # filps the word backwards to undo reversing
+        # flips the word backwards to undo reversing
         unverse = unverse[::-1]
         # iterate through each word
         for key, value in encrypt.items():
