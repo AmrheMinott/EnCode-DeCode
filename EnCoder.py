@@ -118,6 +118,7 @@ def main():
         mainMenuOption = input("strings (1) or a .txt file (2) or (3) to exit program ")
 
         if mainMenuOption == "1":
+            
             while userInput != "exit":
                 userInput = input("\n\n\nEnter String: -> ")
                 if userInput == "exit":
@@ -132,6 +133,7 @@ def main():
                     break
             
         elif mainMenuOption == "2":
+
             while True:
                 print("Enter name of file below or type exit to return to main menu")
                 filename = input("Enter name of .txt file -> ")
