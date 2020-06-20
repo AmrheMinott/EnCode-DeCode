@@ -13,7 +13,6 @@
 import os
 
 
-
 # encryption dictionary
 # this dictionary is used to hold a few words that I personally know and so I use them in the encrptyion process
 encrypt = {
@@ -63,9 +62,9 @@ def encode(userInput):
 
     # reverse the string
     reverse = builtString[::-1]
-    print(f"Your String reversed is \n\n-> {reverse}")
+    print(f"{reverse}")
 
-        
+
 
 
 def decode(userInput):
@@ -80,9 +79,9 @@ def decode(userInput):
         for word in unverse.split():
             if word == value:
                 unverse = unverse.replace(word , value)
-    
-    print(f"Your Decoded String is \n {unverse}")
-        
+
+    print(f"{unverse}")
+
 
 def load(filename):
     print('getcwd:      ', os.getcwd())
@@ -94,15 +93,15 @@ def load(filename):
     # in the event of an error we say the file could not be found and we return a dummy value
     try:
         file = open(filename, 'r')
-        read = file.read()
+        read = file.readlines()
         file.close()
         return read
     except FileNotFoundError:
         print("file is not found try again")
         return "DUMMY_VALUE"
-        
-    
-    
+
+
+
 
 
 
@@ -124,14 +123,14 @@ def main():
                 if userInput == "exit":
                     break
                 option = input("\n\n\n(E -> encode or D -> decode or exit to return to main menu). Enter option: -> ")
-                    
+
                 if option == "e" or option == "E":
                     encode(userInput)
                 elif option == "d" or option == "D":
                     decode(userInput)
                 elif option == 'exit': # not really needed tbh
                     break
-            
+
         elif mainMenuOption == "2":
 
             while True:
@@ -146,10 +145,14 @@ def main():
                 if text != "DUMMY_VALUE":
                     option = input("(E -> encode or D -> decode")
                     if option == "e" or option == "E":
-                        encode(text)
+                        print('Your String reversed is \n\n->')
+                        for sentence in text:
+                            encode(sentence)
                     elif option == "d" or option == "D":
-                        decode(text)
-                
+                        print('Your Decoded String is \n')
+                        for sentence in text:
+                            decode(sentence)
+
 
         elif mainMenuOption == "3" or mainMenuOption == "exit":
             break # out of the entire program
