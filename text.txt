@@ -1,0 +1,4 @@
+text file showing the data of the present
+
+to be coded or decode based on the 
+command of the user 
