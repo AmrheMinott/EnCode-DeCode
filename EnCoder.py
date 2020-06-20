@@ -82,6 +82,11 @@ def decode(userInput):
 
     print(f"{unverse}")
 
+def writeEncode():
+    pass
+
+def writeDecode():
+    pass
 
 def load(filename):
     print('getcwd:      ', os.getcwd())
@@ -99,10 +104,6 @@ def load(filename):
     except FileNotFoundError:
         print("file is not found try again")
         return "DUMMY_VALUE"
-
-
-
-
 
 
 def main():
