@@ -16,10 +16,13 @@ import os
 # encryption dictionary
 # this dictionary is used to hold a few words that I personally know and so I use them in the encrptyion process
 encrypt = {
+    "and":"$y$",
     "aspectos":"$aspectos$",
 
     "bien":"$bien$",
 
+    "children":"$ninos$",
+    "como":"$como$",
     "computador":"$computador$",
     "culturas":"$culturas$",
 
@@ -27,7 +30,8 @@ encrypt = {
     "dinero":"$dinero$",
 
     "hablando":"$hablando$",
-    "como":"$como$",
+
+    "kids":"$ninos$",
 
     "letra":"$letra$",
     "letras":"$letras$",
@@ -41,6 +45,10 @@ encrypt = {
 
     "realizacion":"$realizacion$",
     "real":"$real$",
+
+
+    "well":"$bien$",
+    "who":"$quien$",
 
     "y":"$y$"
 }
@@ -144,7 +152,7 @@ def main():
                 print("Information of the text file from the start is as follows")
                 print(text)
                 if text != "DUMMY_VALUE":
-                    option = input("(E -> encode or D -> decode")
+                    option = input("(E -> encode or D -> decode --> ")
                     if option == "e" or option == "E":
                         print('Your String reversed is \n\n->')
                         for sentence in text:
