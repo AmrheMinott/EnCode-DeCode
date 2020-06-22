@@ -10,14 +10,17 @@
 '''
 
 import os
+from datetime import datetime
 
 # encryption dictionary
 # this dictionary is used to hold a few words that I personally know and so I use them in the encrptyion process
 encrypt = {
+
     "aspectos":"$aspectos$",
 
     "bien":"$bien$",
 
+    "como":"$como$",
     "computador":"$computador$",
     "culturas":"$culturas$",
 
@@ -25,7 +28,6 @@ encrypt = {
     "dinero":"$dinero$",
 
     "hablando":"$hablando$",
-    "como":"$como$",
 
     "letra":"$letra$",
     "letras":"$letras$",
@@ -61,8 +63,7 @@ def encode(userInput):
     # reverse the string
     reverse = builtString[::-1]
     print(f"{reverse}")
-
-
+    return reverse
 
 
 def decode(userInput):
@@ -79,14 +80,36 @@ def decode(userInput):
                 unverse = unverse.replace(word , value)
 
     print(f"{unverse}")
+    return unverse
+
+
+def write_Decode_Encode(text, filename, fileChoice):
+
+    now = datetime.now()
+
+    if filename == None:
+        string = 'addition to was made on ' + str(now)
+    else:
+        string = 'addition to ' + filename + ' was made on ' + str(now)
+
+    if fileChoice == 1:
+        file = open('writeEncode.txt', 'a')
+    else:
+        file = open('writeDecode.txt', 'a')
+
+    file.write(string)
+    string = '\n'
+    file.write(string)
+    file.write(text)
+    string = '\n\n'
+    file.write(string)
+    file.close()
 
 
 def load(filename):
-    print('getcwd:      ', os.getcwd())
-    print('__file__:    ', __file__)
     path = os.getcwd()
     path = path + '/' + filename
-    print(path)
+    # print(path)
 
     # in the event of an error we say the file could not be found and we return a dummy value
     try:
@@ -97,10 +120,6 @@ def load(filename):
     except FileNotFoundError:
         print("file is not found try again")
         return "DUMMY_VALUE"
-
-
-
-
 
 
 def main():
@@ -114,21 +133,26 @@ def main():
 
         mainMenuOption = input("strings (1) or a .txt file (2) or (3) to exit program ")
 
+        # user enters string one by one
         if mainMenuOption == "1":
-            while userInput != "exit":
+
+            while True:
                 userInput = input("\n\n\nEnter String: -> ")
                 if userInput == "exit":
                     break
-                option = input("\n\n\n(E -> encode or D -> decode or exit to return to main menu). Enter option: -> ")
+                option = input("(E -> encode or D -> decode or exit to return to main menu). Enter option: -> ")
 
                 if option == "e" or option == "E":
-                    encode(userInput)
+                    write_Decode_Encode(encode(userInput), None, 1)
                 elif option == "d" or option == "D":
-                    decode(userInput)
-                elif option == 'exit': # not really needed tbh
+                    write_Decode_Encode(decode(userInput), None, 2)
+                elif option == 'exit':
                     break
 
+
+        # user loads an entire .txt file
         elif mainMenuOption == "2":
+
             while True:
                 print("Enter name of file below or type exit to return to main menu")
                 filename = input("Enter name of .txt file -> ")
@@ -137,17 +161,25 @@ def main():
                 print("This is the filename you entered " + filename)
                 text = load(filename)
                 print("Information of the text file from the start is as follows")
-                print(text)
+
                 if text != "DUMMY_VALUE":
-                    option = input("(E -> encode or D -> decode")
+                    print(text)
+                    option = input("(E -> encode or D -> decode --> ")
+                    result = ""
                     if option == "e" or option == "E":
-                        print('Your String reversed is \n\n->')
+                        print('Your String reversed is ->\n')
                         for sentence in text:
-                            encode(sentence)
+                            result += encode(sentence)
+                            result += '\n'
+                        write_Decode_Encode(result, filename, 1)
                     elif option == "d" or option == "D":
                         print('Your Decoded String is \n\n ')
                         for sentence in text:
-                            decode(sentence)
+                            result += decode(sentence)
+                            result += '\n'
+                        write_Decode_Encode(result, filename, 2)
+                else:
+                    print("there is an error with the loading the file " + filename)
 
 
         elif mainMenuOption == "3" or mainMenuOption == "exit":
