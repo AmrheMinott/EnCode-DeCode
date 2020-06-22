@@ -9,9 +9,7 @@
         There is also the ability of the app to decode the same thought and ideas that were added orignially.
 '''
 
-
 import os
-
 
 # encryption dictionary
 # this dictionary is used to hold a few words that I personally know and so I use them in the encrptyion process
@@ -147,7 +145,7 @@ def main():
                         for sentence in text:
                             encode(sentence)
                     elif option == "d" or option == "D":
-                        print('Your Decoded String is \n')
+                        print('Your Decoded String is \n\n ')
                         for sentence in text:
                             decode(sentence)
 
