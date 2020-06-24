@@ -45,6 +45,7 @@ encrypt = {
     "y":"$y$"
 }
 
+# this function takes a string as an input and applys the encoding procedure to the inputted string
 def encode(userInput):
     # the string that will be used to hold the values of the the string in the final result
     builtString = " "
@@ -60,12 +61,13 @@ def encode(userInput):
         else:
             builtString += (" E" + word + "E ")
 
-    # reverse the string
+    # reverse the string and prints then returns it
     reverse = builtString[::-1]
     print(f"{reverse}")
     return reverse
 
 
+# this function takes a string as an input and applys the encoding procedure in reverse to the inputted string
 def decode(userInput):
     # we decode here
     unverse = userInput.replace("E" , "")
@@ -79,24 +81,32 @@ def decode(userInput):
             if word == value:
                 unverse = unverse.replace(word , value)
 
+    # prints the decoded string and returns it
     print(f"{unverse}")
     return unverse
 
 
+# this function takes a whole 
+# str -> text       a whole text file as 
+# str -> filename   the name of the file we got the orignial text from 
+# int -> fileChoice and an integer that represents the file we are going to append to
 def write_Decode_Encode(text, filename, fileChoice):
 
     now = datetime.now()
 
+    # if the filename variable does not exists then we don't say the filename for the string var
     if filename == None:
         string = 'addition to was made on ' + str(now)
     else:
         string = 'addition to ' + filename + ' was made on ' + str(now)
 
+    # this is the file we are going to open
     if fileChoice == 1:
         file = open('writeEncode.txt', 'a')
     else:
         file = open('writeDecode.txt', 'a')
 
+    # we are writing the data in the file
     file.write(string)
     string = '\n'
     file.write(string)
@@ -123,13 +133,12 @@ def load(filename):
 
 
 def main():
-    # string via user to encrpt is entered
     mainMenuOption = ""
     userInput = ''
 
     while mainMenuOption != "3":
 
-        print("Main Menu\n ")
+        print("Main Menu\n")
 
         mainMenuOption = input("strings (1) or a .txt file (2) or (3) to exit program ")
 
@@ -138,16 +147,17 @@ def main():
 
             while True:
                 userInput = input("\n\n\nEnter String: -> ")
-                if userInput == "exit":
-                    break
+                if userInput.lower() == "exit": # if the user types and enters exit into the function we exit
+                    break # to main menu
                 option = input("(E -> encode or D -> decode or exit to return to main menu). Enter option: -> ")
 
+                # since no text file was loaded then the parameter passed in None
                 if option == "e" or option == "E":
                     write_Decode_Encode(encode(userInput), None, 1)
                 elif option == "d" or option == "D":
                     write_Decode_Encode(decode(userInput), None, 2)
                 elif option == 'exit':
-                    break
+                    break # to main menu
 
 
         # user loads an entire .txt file
@@ -156,15 +166,18 @@ def main():
             while True:
                 print("Enter name of file below or type exit to return to main menu")
                 filename = input("Enter name of .txt file -> ")
-                if filename == "exit":
+                if filename.lower() == "exit": # if the user types and enters exit into the function we exit
                     break # to main menu
                 print("This is the filename you entered " + filename)
                 text = load(filename)
                 print("Information of the text file from the start is as follows")
 
+                # if the file does not exist then the 
                 if text != "DUMMY_VALUE":
                     print(text)
                     option = input("(E -> encode or D -> decode --> ")
+                    while option != 'e' or option != 'E' or option != 'd' or option != 'D':
+                        option = input("(E -> encode or D -> decode --> ")
                     result = ""
                     if option == "e" or option == "E":
                         print('Your String reversed is ->\n')
@@ -173,7 +186,7 @@ def main():
                             result += '\n'
                         write_Decode_Encode(result, filename, 1)
                     elif option == "d" or option == "D":
-                        print('Your Decoded String is \n\n ')
+                        print('Your Decoded String is \n\n')
                         for sentence in text:
                             result += decode(sentence)
                             result += '\n'
