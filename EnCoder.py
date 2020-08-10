@@ -45,13 +45,16 @@ encrypt = {
     "y":"$y$"
 }
 
+# get rid of and replace with regex
+exitOptions = ['q', "quit", 'e', "exit"]
+
 # this function takes a string as an input and applys the encoding procedure to the inputted string
 def encode(userInput):
     # the string that will be used to hold the values of the the string in the final result
     builtString = " "
 
     # converts the string to lowercase
-    userInput = userInput.lower();
+    userInput = userInput.lower()
 
     # iterate through each word
     for word in userInput.split():
@@ -108,18 +111,17 @@ def write_Decode_Encode(text, filename, fileChoice):
 
     # we are writing the data in the file
     file.write(string)
-    string = '\n'
-    file.write(string)
+    file.write('\n')
     file.write(text)
-    string = '\n\n'
-    file.write(string)
+    file.write('end of addition \n\n')
     file.close()
 
 
 def load(filename):
     path = os.getcwd()
     path = path + '/' + filename
-    # print(path)
+    print(path)
+    print(filename)
 
     # in the event of an error we say the file could not be found and we return a dummy value
     try:
@@ -166,17 +168,19 @@ def main():
             while True:
                 print("Enter name of file below or type exit to return to main menu")
                 filename = input("Enter name of .txt file -> ")
-                if filename.lower() == "exit": # if the user types and enters exit into the function we exit
+                if filename.lower() in exitOptions: # if the user types and enters exit into the function we exit
                     break # to main menu
                 print("This is the filename you entered " + filename)
                 text = load(filename)
-                print("Information of the text file from the start is as follows")
+                
 
                 # if the file does not exist then the 
                 if text != "DUMMY_VALUE":
+                    print("Information of the text file from the start is as follows")
                     print(text)
                     option = input("(E -> encode or D -> decode --> ")
-                    while option != 'e' or option != 'E' or option != 'd' or option != 'D':
+                    # if user types in worng option we loop till they put in right option
+                    while option != 'e' and option != 'E' and option != 'd' and option != 'D':
                         option = input("(E -> encode or D -> decode --> ")
                     result = ""
                     if option == "e" or option == "E":
